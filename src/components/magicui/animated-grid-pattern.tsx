@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 interface GridSquare {
@@ -30,21 +30,21 @@ export const AnimatedGridPattern = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   
-  const getPos = (): [number, number] => [
+  const getPos = useCallback((): [number, number] => [
     Math.floor((Math.random() * dimensions.width) / width),
     Math.floor((Math.random() * dimensions.height) / height),
-  ];
+  ], [dimensions.width, dimensions.height, width, height]);
 
-  const generateSquares = (count: number): GridSquare[] => {
+  const generateSquares = useCallback((count: number): GridSquare[] => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
       pos: getPos(),
     }));
-  };
+  }, [getPos]);
 
-  const [squares, setSquares] = useState<GridSquare[]>(() => generateSquares(numSquares));
+  const [squares, setSquares] = useState<GridSquare[]>([]);
 
-  const updateSquarePosition = (id: number) => {
+  const updateSquarePosition = useCallback((id: number) => {
     setSquares((currentSquares) =>
       currentSquares.map((sq) =>
         sq.id === id
@@ -55,7 +55,7 @@ export const AnimatedGridPattern = ({
           : sq
       )
     );
-  };
+  }, [getPos]);
 
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
