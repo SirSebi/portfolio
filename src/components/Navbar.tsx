@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-
 export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-sm">

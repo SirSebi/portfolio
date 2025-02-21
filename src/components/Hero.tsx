@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { cn } from "@/lib/utils";
 import { AnimatedGridPattern } from "./magicui/animated-grid-pattern";
 
@@ -21,16 +22,20 @@ export default function Hero() {
       {/* Content */}
       <div className="relative text-center max-w-3xl mx-auto px-4 z-10">
         <div className="relative w-32 h-32 mx-auto mb-8 group cursor-pointer">
-          <img
+          <Image
             src="/default-memoji.png" 
             alt="Sebastian Memoji"
-            className="absolute top-0 left-0 w-full h-full transition-all duration-300 ease-in-out group-hover:opacity-0"
+            width={128}
+            height={128}
+            className="absolute top-0 left-0 transition-all duration-300 ease-in-out group-hover:opacity-0"
             style={{ backfaceVisibility: 'hidden' }}
           />
-          <img
+          <Image
             src="/hover-memoji.png"
             alt="Sebastian Memoji Winking"
-            className="absolute top-0 left-0 w-full h-full transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100"
+            width={128}
+            height={128}
+            className="absolute top-0 left-0 transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100"
             style={{ backfaceVisibility: 'hidden' }}
           />
         </div>
