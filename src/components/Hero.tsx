@@ -1,20 +1,21 @@
 import Image from 'next/image';
 import { cn } from "@/lib/utils";
-import { AnimatedGridPattern } from "./magicui/animated-grid-pattern";
 import { Emoji } from "@/components/ui/emoji";
+import { GridPattern } from './ui/grid-pattern';
 
 export default function Hero() {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Grid Background */}
+      {/* Grid Background */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <AnimatedGridPattern
-          numSquares={30}
-          maxOpacity={0.1}
-          duration={3}
+        <GridPattern
+          width={30}
+          height={30}
+          x={-1}
+          y={-1}
+          strokeDasharray={"4 2"}
           className={cn(
-            "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-            "absolute inset-x-0 inset-y-[-50%] h-[200%] skew-y-12",
+            "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
           )}
         />
       </div>
