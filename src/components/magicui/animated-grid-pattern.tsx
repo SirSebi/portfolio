@@ -27,7 +27,7 @@ export const AnimatedGridPattern = ({
   duration = 3,
 }: AnimatedGridPatternProps) => {
   const id = useId();
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<SVGSVGElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   
   const getPos = useCallback((): [number, number] => [
