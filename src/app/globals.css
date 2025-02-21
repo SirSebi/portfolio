@@ -80,8 +80,6 @@ body {
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -89,4 +87,18 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@font-face {
+  font-family: 'Twemoji';
+  src: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/font/twemoji-mozilla.woff2') format('woff2');
+  font-display: swap;
+}
+
+.emoji {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -0.1em;
 }

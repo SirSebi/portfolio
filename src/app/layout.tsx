@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from 'next/script';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script 
+          src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" 
+          crossOrigin="anonymous"
+        />
+        <Script id="twemoji-init">
+          {`
+            window.onload = function() {
+              twemoji.parse(document.body, {
+                folder: 'svg',
+                ext: '.svg'
+              });
+            }
+          `}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

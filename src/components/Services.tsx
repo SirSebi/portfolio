@@ -36,7 +36,7 @@ export default function Services() {
             <Card key={index} className="bg-zinc-900/50 border-zinc-800 hover:border-zinc-700 transition-colors">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
-                  <span className={`inline-block transition-all duration-300 ease-in-out ${service.animation}`}>
+                  <span className={`inline-block transition-all duration-300 ease-in-out ${service.animation} emoji`}>
                     {service.emoji}
                   </span>
                   {service.title}
