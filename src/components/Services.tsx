@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Emoji } from "@/components/ui/emoji";
 
 export default function Services() {
   return (
@@ -6,7 +7,9 @@ export default function Services() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-white">
-            Was ich mache <span className="inline-block transition-all duration-300 ease-in-out hover:scale-110">💻</span>
+            Was ich mache <span className="inline-block transition-all duration-300 ease-in-out hover:scale-110">
+              <Emoji symbol="💻" />
+            </span>
           </h2>
           <p className="mt-4 text-xl text-zinc-400">
             Entwicklung moderner Web-Anwendungen
@@ -37,7 +40,7 @@ export default function Services() {
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
                   <span className={`inline-block transition-all duration-300 ease-in-out ${service.animation}`}>
-                    {service.emoji}
+                    <Emoji symbol={service.emoji} />
                   </span>
                   {service.title}
                 </CardTitle>
