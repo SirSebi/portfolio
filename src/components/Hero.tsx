@@ -21,7 +21,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative text-center max-w-3xl mx-auto px-4 z-10">
-        <div className="relative w-32 h-32 mx-auto mb-8 group cursor-pointer">
+        <div className="relative w-32 h-32 mx-auto mb-8 group cursor-pointer translate-x-[-20px] translate-y-[-8px]">
           <Image
             src="/default-memoji.png" 
             alt="Sebastian Memoji"
@@ -41,7 +41,7 @@ export default function Hero() {
         </div>
         <h1 className="text-6xl font-bold tracking-tighter text-white mb-4">
           Hey, I&apos;m Sebastian <span className="inline-block transition-all duration-300 ease-in-out hover:rotate-[15deg]">
-            <Emoji symbol="👋" />
+            <Emoji symbol="👋" offset={{ x: "2px", y: "-1px" }} />
           </span>
         </h1>
         <p className="text-2xl text-zinc-400 mt-6">

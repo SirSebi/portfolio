@@ -8,7 +8,7 @@ export default function Services() {
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-white">
             Was ich mache <span className="inline-block transition-all duration-300 ease-in-out hover:scale-110">
-              <Emoji symbol="💻" />
+              <Emoji symbol="💻" offset={{ y: "-2px" }} />
             </span>
           </h2>
           <p className="mt-4 text-xl text-zinc-400">

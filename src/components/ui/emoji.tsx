@@ -6,9 +6,18 @@ interface EmojiProps {
   symbol: string
   size?: string
   className?: string
+  offset?: {
+    x?: string
+    y?: string
+  }
 }
 
-export function Emoji({ symbol, size = "1em", className = "" }: EmojiProps) {
+export function Emoji({ 
+  symbol, 
+  size = "1em", 
+  className = "",
+  offset = { x: "0", y: "0" }
+}: EmojiProps) {
   const spanRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
@@ -35,6 +44,7 @@ export function Emoji({ symbol, size = "1em", className = "" }: EmojiProps) {
           spanRef.current.style.width = size
           spanRef.current.style.height = size
           spanRef.current.style.verticalAlign = "middle"
+          spanRef.current.style.transform = `translate(${offset.x}, ${offset.y})`
           spanRef.current.textContent = ""
         }
       }
@@ -49,7 +59,7 @@ export function Emoji({ symbol, size = "1em", className = "" }: EmojiProps) {
 
       img.src = emojiUrl
     }
-  }, [symbol, size])
+  }, [symbol, size, offset])
 
   return (
     <span
@@ -59,6 +69,7 @@ export function Emoji({ symbol, size = "1em", className = "" }: EmojiProps) {
         display: "inline-block",
         width: size,
         height: size,
+        transform: `translate(${offset.x}, ${offset.y})`
       }}
     >
       {symbol}
