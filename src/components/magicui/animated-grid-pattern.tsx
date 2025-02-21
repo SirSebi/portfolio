@@ -16,7 +16,6 @@ interface AnimatedGridPatternProps {
   className?: string;
   maxOpacity?: number;
   duration?: number;
-  repeatDelay?: number;
 }
 
 export const AnimatedGridPattern = ({
@@ -26,7 +25,6 @@ export const AnimatedGridPattern = ({
   className,
   maxOpacity = 0.5,
   duration = 3,
-  repeatDelay = 0.5,
 }: AnimatedGridPatternProps) => {
   const id = useId();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -63,7 +61,7 @@ export const AnimatedGridPattern = ({
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares));
     }
-  }, [dimensions, numSquares]);
+  }, [dimensions, numSquares, generateSquares]);
 
   useEffect(() => {
     const current = containerRef.current;
