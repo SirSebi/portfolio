@@ -1,63 +1,51 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  ComponentPropsWithoutRef,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from "react";
-
+import { useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
-export interface AnimatedGridPatternProps
-  extends ComponentPropsWithoutRef<"svg"> {
+interface GridSquare {
+  id: number;
+  pos: [number, number];
+}
+
+interface AnimatedGridPatternProps {
   width?: number;
   height?: number;
-  x?: number;
-  y?: number;
-  strokeDasharray?: any;
   numSquares?: number;
+  className?: string;
   maxOpacity?: number;
   duration?: number;
   repeatDelay?: number;
 }
 
-export function AnimatedGridPattern({
+export const AnimatedGridPattern = ({
   width = 40,
   height = 40,
-  x = -1,
-  y = -1,
-  strokeDasharray = 0,
-  numSquares = 50,
+  numSquares = 30,
   className,
   maxOpacity = 0.5,
-  duration = 4,
+  duration = 3,
   repeatDelay = 0.5,
-  ...props
-}: AnimatedGridPatternProps) {
+}: AnimatedGridPatternProps) => {
   const id = useId();
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [squares, setSquares] = useState(() => generateSquares(numSquares));
+  
+  const getPos = (): [number, number] => [
+    Math.floor((Math.random() * dimensions.width) / width),
+    Math.floor((Math.random() * dimensions.height) / height),
+  ];
 
-  function getPos() {
-    return [
-      Math.floor((Math.random() * dimensions.width) / width),
-      Math.floor((Math.random() * dimensions.height) / height),
-    ];
-  }
-
-  // Adjust the generateSquares function to return objects with an id, x, and y
-  function generateSquares(count: number) {
+  const generateSquares = (count: number): GridSquare[] => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
       pos: getPos(),
     }));
-  }
+  };
 
-  // Function to update a single square's position
+  const [squares, setSquares] = useState<GridSquare[]>(() => generateSquares(numSquares));
+
   const updateSquarePosition = (id: number) => {
     setSquares((currentSquares) =>
       currentSquares.map((sq) =>
@@ -66,22 +54,23 @@ export function AnimatedGridPattern({
               ...sq,
               pos: getPos(),
             }
-          : sq,
-      ),
+          : sq
+      )
     );
   };
 
-  // Update squares to animate in
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares));
     }
   }, [dimensions, numSquares]);
 
-  // Resize observer to update container dimensions
   useEffect(() => {
+    const current = containerRef.current;
+    if (!current) return;
+
     const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         setDimensions({
           width: entry.contentRect.width,
           height: entry.contentRect.height,
@@ -89,16 +78,9 @@ export function AnimatedGridPattern({
       }
     });
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
-    }
-
-    return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current);
-      }
-    };
-  }, [containerRef]);
+    resizeObserver.observe(current);
+    return () => resizeObserver.unobserve(current);
+  }, []);
 
   return (
     <svg
@@ -106,9 +88,8 @@ export function AnimatedGridPattern({
       aria-hidden="true"
       className={cn(
         "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
-        className,
+        className
       )}
-      {...props}
     >
       <defs>
         <pattern
@@ -116,18 +97,17 @@ export function AnimatedGridPattern({
           width={width}
           height={height}
           patternUnits="userSpaceOnUse"
-          x={x}
-          y={y}
+          x={-1}
+          y={-1}
         >
           <path
             d={`M.5 ${height}V.5H${width}`}
             fill="none"
-            strokeDasharray={strokeDasharray}
           />
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill={`url(#${id})`} />
-      <svg x={x} y={y} className="overflow-visible">
+      <svg x={-1} y={-1} className="overflow-visible">
         {squares.map(({ pos: [x, y], id }, index) => (
           <motion.rect
             initial={{ opacity: 0 }}
@@ -151,4 +131,4 @@ export function AnimatedGridPattern({
       </svg>
     </svg>
   );
-}
+};
