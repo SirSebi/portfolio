@@ -39,7 +39,7 @@ export default function Hero() {
           />
         </div>
         <h1 className="text-6xl font-bold tracking-tighter text-white mb-4">
-          Hey, I&apos;m Sebastian <span className="inline-block transition-all duration-300 ease-in-out hover:rotate-[15deg] emoji">👋</span>
+          Hey, I&apos;m Sebastian <span className="inline-block transition-all duration-300 ease-in-out hover:rotate-[15deg]">👋</span>
         </h1>
         <p className="text-2xl text-zinc-400 mt-6">
           Web Developer crafting digital experiences <span className="inline-block transition-all duration-300 ease-in-out hover:translate-y-[-4px]">✨</span>
