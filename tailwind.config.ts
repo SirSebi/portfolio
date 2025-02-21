@@ -55,8 +55,20 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		keyframes: {
+  			wave: {
+  				'0%, 100%': { transform: 'rotate(0deg)' },
+  				'50%': { transform: 'rotate(15deg)' },
+  			},
+  		},
+  		animation: {
+  			'wave': 'wave 300ms ease-in-out',
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('tailwindcss-motion'),
+  ],
 } satisfies Config;
