@@ -1,3 +1,5 @@
+import { ShinyButton } from "./magicui/shiny-button";
+
 export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-sm">
@@ -7,18 +9,7 @@ export default function Navbar() {
             <h1 className="text-xl font-bold text-white">SB</h1>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-zinc-400 hover:text-white transition-colors">
-              Home
-            </a>
-            <a href="#about" className="text-zinc-400 hover:text-white transition-colors">
-              About
-            </a>
-            <a href="#work" className="text-zinc-400 hover:text-white transition-colors">
-              Work
-            </a>
-            <a href="#contact" className="text-zinc-400 hover:text-white transition-colors">
-              Contact 💌
-            </a>
+              <ShinyButton>My Projects</ShinyButton>
           </div>
         </div>
       </div>
