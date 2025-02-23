@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: rgb(24 24 27 / 0.9); /* Ersetzt #0c0a09 mit bg-zinc-900/90 */
+  background-color: #0c0a09; /* Ersetzt #0c0a09 mit bg-zinc-900/90 */
   background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
   background-size: 50px 50px;
