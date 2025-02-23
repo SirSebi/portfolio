@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { Timeline, type TimelineEntry } from "./ui/timeline"
 
 export function TimelineComponent() {
