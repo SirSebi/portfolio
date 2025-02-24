@@ -4,6 +4,10 @@ interface TechIconProps extends SVGProps<SVGSVGElement> {
   size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
+interface TechStackIconProps extends TechIconProps {
+  name: string;
+}
+
 const iconInnerSizes = {
   sm: 'w-5 h-5',
   md: 'w-6 h-6',
@@ -96,7 +100,7 @@ const icons: { [key: string]: React.FC<TechIconProps> } = {
   )
 }
 
-export const TechStackIcon: React.FC<TechIconProps> = ({ name, size = 'md', ...props }) => {
+export const TechStackIcon: React.FC<TechStackIconProps> = ({ name, size = 'md', ...props }) => {
   const Icon = icons[name.toLowerCase()]
   if (!Icon) return null
   return <Icon size={size} {...props} />
