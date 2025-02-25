@@ -48,7 +48,7 @@ const technologies = [
 
 export function Technologies() {
   return (
-    <div className="w-full bg-[#0c0a09] px-4 py-12 md:px-6 lg:px-8">
+    <div className="w-full bg-zinc-950 px-4 py-12 md:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <h2 className="text-4xl font-bold tracking-tight text-white mb-4">Current technologies</h2>
         <p className="text-zinc-400 mb-8">

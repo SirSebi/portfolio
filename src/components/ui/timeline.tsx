@@ -73,7 +73,7 @@ export const Timeline = memo(({ data }: TimelineProps) => {
   }, [])
 
   return (
-    <div className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10" ref={containerRef}>
+    <div className="w-full bg-zinc-950 dark:bg-zinc-950 font-sans md:px-10" ref={containerRef}>
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         <h2 className="text-4xl font-bold tracking-tight text-white mb-4">My Journey</h2>
         <p className="text-zinc-400 mb-8">

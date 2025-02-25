@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: 20 14.3% 4.1%;
+  --background: rgb(10 10 10);
   --grid-color: 0 0% 15%;
 }
 
@@ -45,7 +45,7 @@ body {
   }
 
   :root.dark {
-    --background: 224 71.4% 4.1%;
+    --background: 12 10 9;
     --foreground: 210 20% 98%;
     --card: 224 71.4% 4.1%;
     --card-foreground: 210 20% 98%;
