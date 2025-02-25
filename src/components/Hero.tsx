@@ -6,7 +6,7 @@ import { BlurFade } from './magicui/blur-fade';
 
 export default function Hero() {
   return (
-    <div className="relative h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative h-screen flex items-center justify-center overflow-hidden bg-zinc-950">
       {/* Grid Background */}
       <div className="absolute inset-0 flex items-center justify-center">
         <GridPattern
