@@ -73,15 +73,15 @@ export const Timeline = memo(({ data }: TimelineProps) => {
   }, [])
 
   return (
-    <div className="w-full bg-zinc-950 dark:bg-zinc-950 font-sans md:px-10" ref={containerRef}>
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+    <div className="w-full bg-zinc-950 px-4 py-12 md:px-6 lg:px-8" ref={containerRef}>
+      <div className="mx-auto max-w-6xl py-20">
         <h2 className="text-4xl font-bold tracking-tight text-white mb-4">My Journey</h2>
         <p className="text-zinc-400 mb-8">
             I&apos;ve been working as a developer for over 2 years now.
         </p>
       </div>
 
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+      <div ref={ref} className="relative max-w-6xl mx-auto pb-20">
         {data.map((item, index) => (
           <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
