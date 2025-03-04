@@ -52,7 +52,7 @@ export default function Projects() {
                             description="A project that started as a joke became reality and I created the website for our joke e-sport team."
                             imageUrl="/projects/eloweitwurf.png"
                             url="Eloweitwurf"
-                            technologies={[{ name: "React" }, { name: "Nextjs" }, { name: "Supabase" }]}
+                            technologies={[{ name: "React" }, { name: "Next.js" }, { name: "Tailwind CSS" }, { name: "Supabase" }]}
                         />
                     </div>
                     </BlurFade>
