@@ -1,4 +1,11 @@
+'use client'
+
 import { ShinyButton } from "./magicui/shiny-button";
+
+const scrollToSection = (id: string) => {
+  const element = document.getElementById(id)
+  element?.scrollIntoView({ behavior: "smooth"});
+};
 
 export default function Navbar() {
   return (
@@ -9,7 +16,7 @@ export default function Navbar() {
             <h1 className="text-xl font-bold text-white">SB</h1>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-              <ShinyButton>Projects</ShinyButton>
+              <ShinyButton onClick={() => scrollToSection("projects")}>Projects</ShinyButton>
           </div>
         </div>
       </div>
