@@ -46,6 +46,14 @@ export default function Projects() {
                             url="Northern Ink"
                             technologies={[{ name: "JavaScript" }, { name: "PHP" }, { name: "CSS" }, { name: "AJAX" }, { name: "MYSQL" }]}
                         />
+
+                        <ProjectCard
+                            title="E-Sport Website"
+                            description="A project that started as a joke became reality and I created the website for our joke e-sport team."
+                            imageUrl="/projects/eloweitwurf.png"
+                            url="Eloweitwurf"
+                            technologies={[{ name: "React" }, { name: "Nextjs" }, { name: "Supabase" }]}
+                        />
                     </div>
                     </BlurFade>
                 </div>
