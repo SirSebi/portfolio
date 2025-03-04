@@ -53,9 +53,11 @@ export function TimelineComponent() {
   ]
 
   return (
-    <div className="w-full">
-      <Timeline data={data} />
-    </div>
+    <section id="timeline">
+      <div className="w-full">
+        <Timeline data={data} />
+      </div>
+    </section>
   )
 }
 

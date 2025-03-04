@@ -1,3 +1,4 @@
+import { BlurFade } from "./magicui/blur-fade";
 import ProjectCard from "./ui/project-card";
 
 export default function Projects() {
@@ -5,11 +6,14 @@ export default function Projects() {
         <section id="projects">
             <div className="w-full bg-zinc-950 px-4 py-12 md:px-6 lg:px-8">
                 <div className="mx-auto max-w-6xl py-20">
+                    <BlurFade delay={0.25} inView>
                     <h2 className="text-4xl font-bold tracking-tight text-white mb-4">Personal Projects</h2>
                     <p className="text-zinc-400 mb-8">
                     I&apos;m proficient in a range of modern technologies that empower me to build highly functional solutions. These
                     are some of my main technologies.
                     </p>
+                    </BlurFade>
+                    <BlurFade delay={0.25*2} inView>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                         <ProjectCard
                             title="Personal Portfolio"
@@ -43,6 +47,7 @@ export default function Projects() {
                             technologies={[{ name: "JavaScript" }, { name: "PHP" }, { name: "CSS" }, { name: "AJAX" }, { name: "MYSQL" }]}
                         />
                     </div>
+                    </BlurFade>
                 </div>
             </div>
         </section>

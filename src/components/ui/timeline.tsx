@@ -3,6 +3,7 @@
 import type React from "react"
 import { useEffect, useRef, useState, memo } from "react"
 import { useSpring, animated } from "@react-spring/web"
+import { BlurFade } from "../magicui/blur-fade"
 
 export interface TimelineEntry {
   title: string
@@ -75,10 +76,12 @@ export const Timeline = memo(({ data }: TimelineProps) => {
   return (
     <div className="w-full bg-zinc-950 px-4 py-12 md:px-6 lg:px-8" ref={containerRef}>
       <div className="mx-auto max-w-6xl pt-20 pb-10">
-        <h2 className="text-4xl font-bold tracking-tight text-white mb-4">My Journey</h2>
-        <p className="text-zinc-400 mb-8">
+        <BlurFade delay={0.25} inView>
+          <h2 className="text-4xl font-bold tracking-tight text-white mb-4">My Journey</h2>
+          <p className="text-zinc-400 mb-8">
             I&apos;ve been working as a developer for over 2 years now.
         </p>
+        </BlurFade>
       </div>
 
       <div ref={ref} className="relative max-w-6xl mx-auto pb-20">

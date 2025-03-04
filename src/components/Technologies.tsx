@@ -2,6 +2,7 @@
 
 import { TechnologyCard } from "@/components/ui/technology-card"
 import { TechStackIcon } from "@/components/icons/TechStackIcons"
+import { BlurFade } from "./magicui/blur-fade"
 
 const technologies = [
   {
@@ -48,33 +49,39 @@ const technologies = [
 
 export function Technologies() {
   return (
-    <div className="w-full bg-zinc-950 px-4 py-12 md:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="text-4xl font-bold tracking-tight text-white mb-4">Current technologies</h2>
-        <p className="text-zinc-400 mb-8">
-          I&apos;m proficient in a range of modern technologies that empower me to build highly functional solutions. These
-          are some of my main technologies.
-        </p>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {technologies.map((tech) => (
-            <TechnologyCard
-              key={tech.name}
-              className="relative bg-zinc-900/40 hover:bg-black/40 backdrop-blur-sm border-zinc-800/40 transition-all duration-300"
-            >
-              <div className="flex items-start gap-4">
-                <div className="p-2">
-                  <tech.icon />
-                </div>
-                <div className="pt-4">
-                  <h3 className="font-medium text-white">{tech.name}</h3>
-                  <p className="text-sm text-zinc-400">{tech.description}</p>
-                </div>
-              </div>
-            </TechnologyCard>
-          ))}
+    <section id="technologies">
+      <div className="w-full bg-zinc-950 px-4 py-12 md:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+        <BlurFade delay={0.25} inView>
+          <h2 className="text-4xl font-bold tracking-tight text-white mb-4">Current technologies</h2>
+          <p className="text-zinc-400 mb-8">
+            I&apos;m proficient in a range of modern technologies that empower me to build highly functional solutions. These
+            are some of my main technologies.
+          </p>
+          </BlurFade>
+          <BlurFade delay={0.25*2} inView>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {technologies.map((tech) => (
+                <TechnologyCard
+                  key={tech.name}
+                  className="relative bg-zinc-900/40 hover:bg-black/40 backdrop-blur-sm border-zinc-800/40 transition-all duration-300"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-2">
+                      <tech.icon />
+                    </div>
+                    <div className="pt-4">
+                      <h3 className="font-medium text-white">{tech.name}</h3>
+                      <p className="text-sm text-zinc-400">{tech.description}</p>
+                    </div>
+                  </div>
+                </TechnologyCard>
+              ))}
+            </div>
+          </BlurFade>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
