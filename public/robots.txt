@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://sebastianbrandes.com/sitemap.xml 
+Sitemap: https://sebastianbrandes.dev/sitemap.xml 
