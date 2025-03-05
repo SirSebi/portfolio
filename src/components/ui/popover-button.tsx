@@ -14,6 +14,7 @@ export default function SimpleContactButton() {
   const [message, setMessage] = useState("")
   const [isSending, setIsSending] = useState(false)
   const [isSent, setIsSent] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [focusedInput, setFocusedInput] = useState<string | null>(null)
   const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null)
   const popoverRef = useRef<HTMLDivElement>(null)
@@ -49,26 +50,51 @@ export default function SimpleContactButton() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSending(true)
+    setError(null)
 
-    // Simulate sending - replace with your actual form submission logic
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
 
-    setIsSending(false)
-    setIsSent(true)
-    setName("")
-    setEmail("")
-    setMessage("")
+      const data = await response.json();
 
-    // Reset the "sent" state after 3 seconds
-    setTimeout(() => {
-      setIsSent(false)
-      setIsOpen(false)
-    }, 3000)
+      if (!response.ok) {
+        throw new Error(data.error || 'Fehler beim Senden der Nachricht');
+      }
+
+      // Erfolgreicher Versand
+      setIsSending(false)
+      setIsSent(true)
+      setName("")
+      setEmail("")
+      setMessage("")
+
+      // Reset the "sent" state after 3 seconds
+      setTimeout(() => {
+        setIsSent(false)
+        setIsOpen(false)
+      }, 3000)
+    } catch (err) {
+      setIsSending(false)
+      setError(err instanceof Error ? err.message : 'Ein unbekannter Fehler ist aufgetreten')
+      
+      // Fehler nach 5 Sekunden ausblenden
+      setTimeout(() => {
+        setError(null)
+      }, 5000)
+    }
   }
 
   // Toggle popover
   const handleButtonClick = () => {
     setIsOpen(!isOpen)
+    // Reset error state when opening/closing
+    setError(null)
   }
 
   // Get popover position
@@ -120,6 +146,12 @@ export default function SimpleContactButton() {
                     <p className="text-sm text-white/70">Send a brief message and I'll get back to you.</p>
                   </div>
                   
+                  {error && (
+                    <div className="p-2 bg-red-500/10 border border-red-500/20 rounded text-red-400 text-sm">
+                      {error}
+                    </div>
+                  )}
+                  
                   <div className="relative">
                     <label 
                       htmlFor="name" 
@@ -134,7 +166,7 @@ export default function SimpleContactButton() {
                     <input
                       id="name"
                       className={cn(
-                        "flex h-10 w-full rounded-md border bg-zinc-900 px-3 pt-4 pb-1 text-sm focus-visible:outline-none transition-colors",
+                        "flex h-10 w-full rounded-md border bg-zinc-800 px-3 pt-4 pb-1 text-sm focus-visible:outline-none transition-colors",
                         focusedInput === 'name' ? "border-primary" : "border-white/10"
                       )}
                       value={name}
@@ -160,7 +192,7 @@ export default function SimpleContactButton() {
                       id="email"
                       type="email"
                       className={cn(
-                        "flex h-10 w-full rounded-md border bg-zinc-900 px-3 pt-4 pb-1 text-sm focus-visible:outline-none transition-colors",
+                        "flex h-10 w-full rounded-md border bg-zinc-800 px-3 pt-4 pb-1 text-sm focus-visible:outline-none transition-colors",
                         focusedInput === 'email' ? "border-primary" : "border-white/10"
                       )}
                       value={email}
@@ -185,7 +217,7 @@ export default function SimpleContactButton() {
                     <textarea
                       id="message"
                       className={cn(
-                        "flex min-h-[80px] w-full rounded-md border bg-zinc-900 px-3 pt-6 pb-2 text-sm focus-visible:outline-none transition-colors",
+                        "flex min-h-[80px] w-full rounded-md border bg-zinc-800 px-3 pt-6 pb-2 text-sm focus-visible:outline-none transition-colors",
                         focusedInput === 'message' ? "border-primary" : "border-white/10"
                       )}
                       value={message}
@@ -198,7 +230,7 @@ export default function SimpleContactButton() {
                   
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center h-10 px-4 py-2 rounded-md text-sm font-medium bg-white/80 text-black hover:bg-white/60 transition-colors w-full disabled:opacity-50"
+                    className="inline-flex items-center justify-center h-10 px-4 py-2 rounded-md text-sm font-medium bg-white text-black hover:bg-white/90 transition-colors w-full disabled:opacity-50"
                     disabled={isSending}
                   >
                     {isSending ? "Sending..." : "Send message"}
