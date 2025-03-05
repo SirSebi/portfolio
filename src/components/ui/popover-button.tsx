@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect, useRef, useCallback } from "react"
-import { Mail } from "lucide-react"
+import { Mail, CheckCircle, AlertCircle } from "lucide-react"
 import { createPortal } from "react-dom"
 import { motion, AnimatePresence } from "motion/react"
 import { cn } from "@/lib/utils"
@@ -136,6 +136,9 @@ export default function SimpleContactButton() {
             >
               {isSent ? (
                 <div className="py-6 text-center">
+                  <div className="flex justify-center mb-4">
+                    <CheckCircle className="w-12 h-12 text-green-400" />
+                  </div>
                   <p className="text-green-400 font-medium mb-2">Message sent!</p>
                   <p className="text-sm text-white/70">Thanks for reaching out. I'll get back to you soon.</p>
                 </div>
@@ -147,8 +150,9 @@ export default function SimpleContactButton() {
                   </div>
                   
                   {error && (
-                    <div className="p-2 bg-red-500/10 border border-red-500/20 rounded text-red-400 text-sm">
-                      {error}
+                    <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-md flex items-start gap-2">
+                      <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                      <p className="text-red-400 text-sm">{error}</p>
                     </div>
                   )}
                   
@@ -230,10 +234,23 @@ export default function SimpleContactButton() {
                   
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center h-10 px-4 py-2 rounded-md text-sm font-medium bg-white text-black hover:bg-white/90 transition-colors w-full disabled:opacity-50"
+                    className={cn(
+                      "inline-flex items-center justify-center h-10 px-4 py-2 rounded-md text-sm font-medium transition-colors w-full",
+                      isSending 
+                        ? "bg-white/50 text-black/70 cursor-not-allowed" 
+                        : "bg-white text-black hover:bg-white/90"
+                    )}
                     disabled={isSending}
                   >
-                    {isSending ? "Sending..." : "Send message"}
+                    {isSending ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-black/70" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : "Send message"}
                   </button>
                 </form>
               )}
