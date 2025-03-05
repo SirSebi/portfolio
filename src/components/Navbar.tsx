@@ -1,5 +1,6 @@
 'use client'
 
+import SimpleContactButton from "./ui/popover-button";
 import { ShinyButton } from "./ui/shiny-button";
 import Link from "next/link";
 
@@ -16,8 +17,9 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="text-xl font-bold text-white" aria-label="Sebastian Brandes">SB</Link>
           </div>
-          <div className="hidden md:flex items-center space-x-8">
-              <ShinyButton onClick={() => scrollToSection("projects")} aria-label="Scroll to my Projects">Projects</ShinyButton>
+          <div className="hidden md:flex items-center space-x-6">
+            <SimpleContactButton />
+            <ShinyButton onClick={() => scrollToSection("projects")} aria-label="Scroll to my Projects">Projects</ShinyButton>
           </div>
         </div>
       </nav>
