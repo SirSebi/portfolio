@@ -147,7 +147,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2">
-              <h3 className="text-lg font-semibold mb-2">Über das Projekt</h3>
+              <h3 className="text-lg font-semibold mb-2">About the Project</h3>
               <p className="text-muted-foreground whitespace-pre-line">{project.longDescription}</p>
 
               {project.features.length > 0 && (
@@ -164,10 +164,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
             <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-semibold mb-2">Projektdetails</h3>
+                <h3 className="text-lg font-semibold mb-2">Project Details</h3>
                 <div className="text-sm">
                   <div className="flex justify-between py-2 border-b border-[#333333]">
-                    <span className="font-medium">Jahr</span>
+                    <span className="font-medium">Year</span>
                     <span className="text-muted-foreground">{project.year}</span>
                   </div>
                 </div>

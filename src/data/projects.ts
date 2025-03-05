@@ -1,4 +1,4 @@
-import type { ProjectDetails } from "@/components/project-modal";
+import type { ProjectDetails } from "@/components/ui/project-modal";
 
 const projects: ProjectDetails[] = [
   {

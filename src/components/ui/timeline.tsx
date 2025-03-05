@@ -3,7 +3,7 @@
 import type React from "react"
 import { useEffect, useRef, useState, memo } from "react"
 import { useSpring, animated } from "@react-spring/web"
-import { BlurFade } from "../magicui/blur-fade"
+import { BlurFade } from "./blur-fade"
 
 export interface TimelineEntry {
   title: string

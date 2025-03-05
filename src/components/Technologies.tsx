@@ -2,7 +2,7 @@
 
 import { TechnologyCard } from "@/components/ui/technology-card"
 import { TechStackIcon } from "@/components/icons/TechStackIcons"
-import { BlurFade } from "./magicui/blur-fade"
+import { BlurFade } from "./ui/blur-fade"
 
 const technologies = [
   {
@@ -49,7 +49,7 @@ const technologies = [
 
 export function Technologies() {
   return (
-    <section id="technologies">
+    <section id="technologies" aria-label="Technologies">
       <div className="w-full bg-zinc-950 px-4 py-12 md:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
         <BlurFade delay={0.25} inView>
@@ -67,7 +67,7 @@ export function Technologies() {
                   className="relative bg-zinc-900/40 hover:bg-black/40 backdrop-blur-sm border-zinc-800/40 transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-2">
+                    <div className="p-2" aria-hidden="true">
                       <tech.icon />
                     </div>
                     <div className="pt-4">

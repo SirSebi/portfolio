@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState } from "react";
-import { BlurFade } from "./magicui/blur-fade";
+import { BlurFade } from "./ui/blur-fade";
 import ProjectCard from "./ui/project-card";
-import { ProjectModal } from "./project-modal";
-import type { ProjectDetails } from "./project-modal";
+import { ProjectModal } from "./ui/project-modal";
+import type { ProjectDetails } from "./ui/project-modal";
 import projects, { getProjectById } from "@/data/projects";
 
 export default function Projects() {
@@ -24,7 +24,7 @@ export default function Projects() {
     };
 
     return ( 
-        <section id="projects">
+        <section id="projects" aria-label="Projects">
             <div className="w-full bg-zinc-950 px-4 py-12 md:px-6 lg:px-8">
                 <div className="mx-auto max-w-6xl py-20">
                     <BlurFade delay={0.25} inView>
@@ -36,7 +36,7 @@ export default function Projects() {
                     <BlurFade delay={0.25*2} inView>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                         {projects.map((project) => (
-                            <div key={project.id}>
+                            <article key={project.id} className="h-full">
                                 <ProjectCard
                                     title={project.title}
                                     description={project.description}
@@ -45,7 +45,7 @@ export default function Projects() {
                                     technologies={project.technologies.map(tech => ({ name: tech }))}
                                     onClick={() => handleProjectClick(project.id)}
                                 />
-                            </div>
+                            </article>
                         ))}
                     </div>
                     </BlurFade>

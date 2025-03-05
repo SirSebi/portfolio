@@ -53,7 +53,7 @@ export function TimelineComponent() {
   ]
 
   return (
-    <section id="timeline">
+    <section id="timeline" aria-label="Work History">
       <div className="w-full">
         <Timeline data={data} />
       </div>

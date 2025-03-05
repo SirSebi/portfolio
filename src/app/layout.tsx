@@ -13,8 +13,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sebastian Brandes",
-  description: "Portfolio",
+  title: "Sebastian Brandes | Webentwickler & Softwareingenieur",
+  description: "Portfolio von Sebastian Brandes - Spezialist für moderne Webentwicklung, Frontend-Technologien und innovative Softwarelösungen.",
+  keywords: ["Webentwicklung", "Frontend", "Software Engineering", "React", "Next.js", "Portfolio"],
+  authors: [{ name: "Sebastian Brandes" }],
+  creator: "Sebastian Brandes",
+  publisher: "Sebastian Brandes",
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    url: "https://sebastianbrandes.com",
+    title: "Sebastian Brandes | Webentwickler & Softwareingenieur",
+    description: "Portfolio von Sebastian Brandes - Spezialist für moderne Webentwicklung, Frontend-Technologien und innovative Softwarelösungen.",
+    siteName: "Sebastian Brandes Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sebastian Brandes | Webentwickler & Softwareingenieur",
+    description: "Portfolio von Sebastian Brandes - Spezialist für moderne Webentwicklung, Frontend-Technologien und innovative Softwarelösungen.",
+    creator: "@sebastianbrandes",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  metadataBase: new URL("https://sebastianbrandes.com"),
+  manifest: "/manifest.json",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -23,7 +48,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="de" className="dark">
+      <head>
+        <link rel="canonical" href="https://sebastianbrandes.com" />
+        <link rel="icon" href="/default-memoji.png" type="image/png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
