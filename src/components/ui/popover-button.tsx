@@ -140,13 +140,13 @@ export default function SimpleContactButton() {
                     <CheckCircle className="w-12 h-12 text-green-400" />
                   </div>
                   <p className="text-green-400 font-medium mb-2">Message sent!</p>
-                  <p className="text-sm text-white/70">Thanks for reaching out. I'll get back to you soon.</p>
+                  <p className="text-sm text-white/70">Thanks for reaching out. I&apos;ll get back to you soon.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="grid gap-4">
                   <div className="space-y-2">
                     <h4 className="font-medium">Quick message</h4>
-                    <p className="text-sm text-white/70">Send a brief message and I'll get back to you.</p>
+                    <p className="text-sm text-white/70">Send a brief message and I&apos;ll get back to you.</p>
                   </div>
                   
                   {error && (
