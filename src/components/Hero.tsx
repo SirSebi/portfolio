@@ -50,8 +50,17 @@ export default function Hero() {
             </span>
           </h1>
         </BlurFade>
-        
+
         <BlurFade delay={0.25*4} inView>
+          <p className="text-zinc-400 hover:text-white transition-colors group">
+          <span className="inline-block transition-all duration-300 ease-in-out group-hover:translate-y-[-4px] group-hover:rotate-[-12deg]">
+            <Emoji symbol="📍" />
+          </span>
+           Aschaffenburg, Germany 
+          </p>
+        </BlurFade>
+        
+        <BlurFade delay={0.25*6} inView>
         <p className="text-2xl text-zinc-400 mt-6">
           Web Developer crafting digital experiences <span className="inline-block transition-all duration-300 ease-in-out hover:translate-y-[-4px]">
             <Emoji symbol="✨" />
@@ -59,15 +68,6 @@ export default function Hero() {
         </p>
         </BlurFade>
 
-        <div className="mt-12 flex items-center justify-center gap-x-6">
-        <BlurFade delay={0.25*6} inView>
-          <a href="#contact" className="text-zinc-400 hover:text-white transition-colors group">
-            Let&apos;s work together <span className="inline-block transition-all duration-300 ease-in-out group-hover:translate-y-[-4px] group-hover:rotate-[12deg]">
-              <Emoji symbol="🚀" />
-            </span>
-          </a>
-          </BlurFade>
-        </div>
       </div>
     </div>
   );
