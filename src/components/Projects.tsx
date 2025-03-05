@@ -1,7 +1,28 @@
+"use client"
+
+import React, { useState } from "react";
 import { BlurFade } from "./magicui/blur-fade";
 import ProjectCard from "./ui/project-card";
+import { ProjectModal } from "./project-modal";
+import type { ProjectDetails } from "./project-modal";
+import projects, { getProjectById } from "@/data/projects";
 
 export default function Projects() {
+    const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleProjectClick = (projectId: string) => {
+        const project = getProjectById(projectId);
+        if (project) {
+            setSelectedProject(project);
+            setIsModalOpen(true);
+        }
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
     return ( 
         <section id="projects">
             <div className="w-full bg-zinc-950 px-4 py-12 md:px-6 lg:px-8">
@@ -9,55 +30,33 @@ export default function Projects() {
                     <BlurFade delay={0.25} inView>
                     <h2 className="text-4xl font-bold tracking-tight text-white mb-4">Personal Projects</h2>
                     <p className="text-zinc-400 mb-8">
-                    I&apos;m proficient in a range of modern technologies that empower me to build highly functional solutions. These
-                    are some of my main technologies.
+                    I leverage a variety of modern technologies to develop high-performance and user-friendly solutions. Here are some of the key technologies used in my projects.
                     </p>
                     </BlurFade>
                     <BlurFade delay={0.25*2} inView>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                        <ProjectCard
-                            title="Personal Portfolio"
-                            description="My personal website showcasing my projects and skills as a developer."
-                            imageUrl="/projects/portfolio.png"
-                            url="https://sebastianbrandes.dev"
-                            technologies={[{ name: "React" }, { name: "Next.js" }, { name: "Tailwind CSS" }]}
-                        />
-
-                        <ProjectCard
-                            title="Commercial Website"
-                            description="A simple and clean website for a commercial cleaning company."
-                            imageUrl="/projects/gebaeudereinigung-puetz.png"
-                            url="https://gebaeudereinigung-puetz.de"
-                            technologies={[{ name: "React" }, { name: "Next.js" }, { name: "Tailwind CSS" }]}
-                        />
-
-                        <ProjectCard
-                            title="DnD Compendium"
-                            description="A Dungeons and Dragons compendium for the DnD 5th edition for private use."
-                            imageUrl="/projects/dnd-compendium.png"
-                            url="DnD Compendium"
-                            technologies={[{ name: "React" }, { name: "Next.js" }, { name: "Tailwind CSS" }, { name: "Supabase" }]}
-                        />
-
-                        <ProjectCard
-                            title="Management System"
-                            description="First ever project I did. A simple management system for an ingame tattoo studio."
-                            imageUrl="/projects/northern-ink.png"
-                            url="Northern Ink"
-                            technologies={[{ name: "JavaScript" }, { name: "PHP" }, { name: "CSS" }, { name: "AJAX" }, { name: "MYSQL" }]}
-                        />
-
-                        <ProjectCard
-                            title="E-Sport Website"
-                            description="A project that started as a joke became reality and I created the website for our joke e-sport team."
-                            imageUrl="/projects/eloweitwurf.png"
-                            url="Eloweitwurf"
-                            technologies={[{ name: "React" }, { name: "Next.js" }, { name: "Tailwind CSS" }, { name: "Supabase" }]}
-                        />
+                        {projects.map((project) => (
+                            <div key={project.id}>
+                                <ProjectCard
+                                    title={project.title}
+                                    description={project.description}
+                                    imageUrl={project.images[0]?.src || "/placeholder.svg"}
+                                    url={project.liveUrl || project.title}
+                                    technologies={project.technologies.map(tech => ({ name: tech }))}
+                                    onClick={() => handleProjectClick(project.id)}
+                                />
+                            </div>
+                        ))}
                     </div>
                     </BlurFade>
                 </div>
             </div>
+
+            <ProjectModal 
+                project={selectedProject}
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+            />
         </section>
     )
 }

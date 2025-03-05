@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
@@ -16,9 +16,10 @@ interface ProjectCardProps {
   imageUrl: string
   technologies: Technology[]
   url?: string
+  onClick?: () => void
 }
 
-export default function ProjectCard({ title, description, imageUrl, technologies, url }: ProjectCardProps) {
+export default function ProjectCard({ title, description, imageUrl, technologies, url, onClick }: ProjectCardProps) {
   const [imageError, setImageError] = useState(false)
 
   const handleImageError = () => {
@@ -26,7 +27,10 @@ export default function ProjectCard({ title, description, imageUrl, technologies
   }
 
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-lg border-[#333333] bg-[#1a1a1a]">
+    <Card 
+      className="overflow-hidden transition-all hover:shadow-lg border-[#333333] bg-[#1a1a1a] cursor-pointer" 
+      onClick={onClick}
+    >
       {/* Mac Browser Header */}
       <div className="bg-[#1a1a1a] px-4 py-2 flex items-center border-b border-[#333333]">
         <div className="flex space-x-2">
@@ -41,6 +45,7 @@ export default function ProjectCard({ title, description, imageUrl, technologies
               target="_blank" 
               rel="noopener noreferrer" 
               className="ml-4 flex-1 px-3 py-1 bg-[#222222] text-xs text-gray-400 rounded-md truncate hover:text-gray-300 cursor-pointer"
+              onClick={(e) => e.stopPropagation()}
             >
               {url}
             </a>
