@@ -60,7 +60,6 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             <button
               onClick={onClose}
               className="h-3 w-3 rounded-full bg-red-500 relative group"
-              aria-label="Close"
             >
               <span className="absolute inset-0 flex items-center justify-center text-[8px] text-red-800 opacity-0 group-hover:opacity-100 font-bold">
               &#x2715;
