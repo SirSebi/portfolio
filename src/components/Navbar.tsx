@@ -15,7 +15,7 @@ export default function Navbar() {
       <nav className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-bold text-white" aria-label="Sebastian Brandes">SB</Link>
+            <p onClick={() => scrollToSection("hero")}  className="text-xl font-bold text-white cursor-pointer" aria-label="Sebastian Brandes">SB</p>
           </div>
           <div className="hidden md:flex items-center space-x-6">
             <SimpleContactButton />
