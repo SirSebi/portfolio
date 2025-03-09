@@ -54,8 +54,8 @@ export default function Hero() {
         </BlurFade>
 
         <BlurFade delay={0.25*4} inView>
-          <p className="text-zinc-400 hover:text-white transition-colors group">
-          <span className="inline-block transition-all duration-300 ease-in-out group-hover:translate-y-[-4px] group-hover:rotate-[-12deg]">
+          <p className="text-zinc-400 hover:text-white transition-colors group cursor-default">
+          <span className="inline-block transition-all duration-300 ease-in-out group-hover:translate-y-[-4px]">
             <Emoji symbol="📍" />
           </span>
            Aschaffenburg, Germany 

@@ -2,7 +2,6 @@
 
 import SimpleContactButton from "./ui/popover-button";
 import { ShinyButton } from "./ui/shiny-button";
-import Link from "next/link";
 
 const scrollToSection = (id: string) => {
   const element = document.getElementById(id)
